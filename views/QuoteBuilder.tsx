@@ -40,9 +40,20 @@ const QuoteBuilder: React.FC<QuoteBuilderProps> = ({ profile, clients, services,
   const [showCatalog, setShowCatalog] = useState(false);
   const [saving, setSaving] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+
+  // Função para gerar o número baseado em data/hora: DDMMYYYYHHMM
+  const generateDateTimeNumber = () => {
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    return `${day}${month}${year}${hours}${minutes}`;
+  };
   
   const [formData, setFormData] = useState<Partial<Quote>>({
-    number: (Math.floor(Math.random() * 9000) + 1000).toString(),
+    number: generateDateTimeNumber(),
     clientId: '',
     date: new Date().toISOString().split('T')[0],
     validUntil: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
