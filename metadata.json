@@ -1,0 +1,7 @@
+{
+  "name": "FocusQuote - V2",
+  "description": "Uma plataforma completa para fotógrafos gerenciarem clientes, criarem serviços e gerarem orçamentos profissionais em PDF de forma rápida e intuitiva.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
